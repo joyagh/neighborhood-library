@@ -30,21 +30,26 @@ public class Main {
         books[19] = new Book(20, "9780812993547", "Heavy", false, "");
 
         Scanner input = new Scanner(System.in);
-
-        System.out.println("Welcome to the library management tool!");
-        System.out.println("\t1) Show Available Books");
-        System.out.println("\t2) Show Checked Out Books");
-        System.out.println("\t0) Exit");
-        System.out.print("Please choose an option: ");
-        int option = input.nextInt();
         boolean run = true;
 
         while (run) {
+            System.out.println("Welcome to the library management tool!");
+            System.out.println("\t1) Show Available Books");
+            System.out.println("\t2) Show Checked Out Books");
+            System.out.println("\t0) Exit");
+            System.out.print("Please choose an option: ");
+        int option = input.nextInt();
+
 
             switch (option) {
                 case 1 -> showAvailableBooks(books);
                 case 2 -> showCheckedOutBooks(books);
-                case 0 -> System.out.println("Goodbye");
+                case 0 -> {
+                    System.out.println("Goodbye");
+                    run = false;
+                }
+
+                default -> System.out.println("Invalid Selection");
             }
 
         }
