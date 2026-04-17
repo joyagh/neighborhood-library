@@ -35,11 +35,33 @@ public class Main {
         System.out.println("\t1) Show Available Books");
         System.out.println("\t2) Show Checked Out Books");
         System.out.println("\t0) Exit");
-        System.out.print("\t1) Please choose an option");
+        System.out.print("Please choose an option: ");
+        int option = input.nextInt();
 
-        for (int i = 0; i < books.length; i ++){
-//            System.out.println(books[i]);
+        switch (option) {
+            case 1 -> showAvailableBooks(books);
+            case 2 -> showCheckedOutBooks(books);
+            case 0 -> System.out.println("Goodbye");
+        }
+
+    }
+
+    public static void showAvailableBooks(Book[] books) {
+        for (int i = 0; i < books.length; i++) {
+            if (!books[i].isCheckedOut()) {
+                System.out.println(books[i]);
+            }
+        }
+    }
+
+    public static void showCheckedOutBooks(Book[] books) {
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].isCheckedOut()) {
+                System.out.println(books[i]);
+            }
         }
 
     }
 }
+
+
