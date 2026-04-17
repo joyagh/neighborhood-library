@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Creating an array of books
 
         Book[] books = new Book[20];
 
@@ -28,9 +29,13 @@ public class Main {
         books[17] = new Book(18, "9780812981605", "The New Jim Crow", false, "");
         books[18] = new Book(19, "9780143124177", "Just Mercy", false, "");
         books[19] = new Book(20, "9780812993547", "Heavy", false, "");
+        // Adding a Scanner
 
         Scanner input = new Scanner(System.in);
+
+        // While the variable run is true, we run the menu
         boolean run = true;
+
 
         while (run) {
             System.out.println("Welcome to the library management tool!");
@@ -41,6 +46,7 @@ public class Main {
         int option = input.nextInt();
 
 
+            // Break needed for case 0 to exit loop
             switch (option) {
                 case 1 -> showAvailableBooks(books);
                 case 2 -> showCheckedOutBooks(books);
@@ -48,6 +54,8 @@ public class Main {
                     System.out.println("Goodbye");
                     run = false;
                 }
+
+                // default added for when input isn't valid
 
                 default -> System.out.println("Invalid Selection");
             }
@@ -57,15 +65,16 @@ public class Main {
 
         public static void showAvailableBooks (Book[]books){
             for (int i = 0; i < books.length; i++) {
-                if (!books[i].isCheckedOut()) {
-                    System.out.println(books[i]);
+                if (!books[i].getIsCheckedOut()) {
+                    System.out.println(books[i].getTitle());
+                    System.out.println(books[i].getIsCheckedOut());
                 }
             }
         }
 
         public static void showCheckedOutBooks (Book[]books){
             for (int i = 0; i < books.length; i++) {
-                if (books[i].isCheckedOut()) {
+                if (books[i].getIsCheckedOut()) {
                     System.out.println(books[i]);
                 }
             }
